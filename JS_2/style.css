@@ -1,0 +1,14 @@
+#pelda {
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    text-align: center;
+}
+
+.koordinatak {
+    display: block;
+    width: 200px;
+    background-color: #76e9c1;
+    text-align: center;
+    margin-top: 10px;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javasript</title>
+</head>
+
+<body>
+    <div>
+        <h1>Személyre szabott életmentő szám:</h1>
+    </div>
+    <button onclick=szamgenerator()>
+        Kérem a számomat MOST!
+    </button>
+    <br><br>
+    <div id="lottoszamok" style="border: dotted 3px; text-align: center;">
+    </div>
+    <!--    szkripty  -->
+    <script>
+        var osszesszam = [0, 0, 0, 0, 0];
+
+        function szamgenerator() {
+            for (var i = 0; i < 5; i++) {
+                osszesszam.fill(Math.round(Math.random() * 89 + 1),i);
+            }
+            var szelveny = document.getElementById("lottoszamok");
+            szelveny.innerHTML = osszesszam;
+        }
+
+    </script>
+</body>
+
+</html>
