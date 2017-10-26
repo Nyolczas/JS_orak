@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiszámolós példa</title>
+    <link src="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+  <h1>Kiszámolós példa</h1>
+  <p>Titkosítás RSA kódokkal</p>
+  <h2>
+      T ^ e mod N = C <br>
+      C ^ d bod N = T
+  </h2>
+  <p>(e= 91, d=3611, N=10)</p>
+  <label for="T">T</label>
+   <input type="number" id="T"><br>
+   <label for="e">e</label>
+   <input type="number" id="e"><br>
+   <label for="N">N</label>
+   <input type="number" id="N"><br>
+   <button onclick="titkosit()">Titkosíts!</button>
+    <ul>
+
+    </ul>
+    <!--   script-->
+    <script src="js/szamol.js"></script>
+</body>
+
+</html>
