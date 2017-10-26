@@ -1,8 +1,10 @@
 #shape {
     width: 200px;
     height: 200px;
-    background-color: red;
+    background-color: hsl(0, 100%, 50%);
     position: relative;
+    top: 150px;
+    left: 250px;
 }
 
 .bold {
