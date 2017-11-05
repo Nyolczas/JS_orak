@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>teszt 1031</title>
+    <style>
+        .bttn {
+            background-color: green;
+            width: 150px;
+            padding: 10px;
+            text-align: center;
+            color: white;
+            box-shadow: 1px 1px 3px rgba(0, 36, 118, 0.65);
+        }
+
+        .bttn:hover {
+            box-shadow: 1px 5px 10px rgba(0, 36, 118, 0.65);
+            background-color: #00981d;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bttn" class="bttn">
+        Növel
+    </div>
+    <div id="bttnDn" class="bttn">
+        Csökkent
+    </div>
+    <div id="element">
+        Eredmény: <span id="katt"></span>
+    </div>
+
+    <script>
+        var i = 0;
+        var gomb = document.getElementById('bttn');
+        var gombDn = document.getElementById('bttnDn');
+        var displayClick = document.getElementById('katt');
+
+        gomb.onclick = function() {
+            i++;
+            if (i >= 3) {
+                gomb.style.backgroundColor = 'blue';
+                gombDn.style.backgroundColor = 'blue';
+            } else if (i > -3 && i < 3) {
+                gomb.style.backgroundColor = 'green';
+                gombDn.style.backgroundColor = 'green';
+            }
+            console.log(i);
+            displayClick.innerHTML = i;
+        }
+
+        gombDn.ondblclick = function() {
+            i--;
+            if (i <= -3) {
+                gomb.style.backgroundColor = 'red';
+                gombDn.style.backgroundColor = 'red';
+            } else if (i > -3 && i < 3) {
+                gomb.style.backgroundColor = 'green';
+                gombDn.style.backgroundColor = 'green';
+            }
+            displayClick.innerHTML = i;
+        }
+    </script>
+</body>
+</html>
+
+

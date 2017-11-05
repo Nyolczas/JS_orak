@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>teszt 1031</title>
+    <style>
+        .bttn {
+            background-color: green;
+            width: 150px;
+            padding: 10px;
+            text-align: center;
+            color: white;
+            box-shadow: 1px 1px 3px rgba(0, 36, 118, 0.65);
+        }
+
+        .bttn:hover {
+            box-shadow: 1px 5px 10px rgba(0, 36, 118, 0.65);
+            background-color: #00981d;
+        }
+    </style>
+</head>
+
+<body>
+    <!--Készítsünk egy gombot a HTML fájlban, tetszőleges megjelenéssel.-->
+    <div id="bttn" class="bttn">
+        Gomb
+    </div>
+    <div id="bttnDn" class="bttn">
+        Gomb
+    </div>
+    <!--    Hozzunk létre egy változót, ami integer értéket tárol és kiinduló értéke 0.-->
+    <!--Akárhányszor rákattintunk a gombra, a változó értéke növekedjen 1-el.-->
+    <!--Akárhányszor duplán kattintunk a gombra a változó értéke csökkenjen 1-el.-->
+    <!--Ha a változó értéke eléri a 3-at, változzon meg a gomb háttérszíne kékre.-->
+    <!--Ha a változó értéke eléri a -3-at, változzon meg a gomb háttérszíne pirosra.-->
+    <!--Ha a változó értéke -3 és 3 között van, az eredeti színével jelenjen meg.-->
+    <!--Hozzunk létre egy element-et a HTML fájlban és minden végbemenő kattintás vagy duplakattintás eseménykor, frissítsük a benne lévő értéket, a változó értékével-->
+    <div id="element">
+        Kattintás: <span id="katt"></span>
+    </div>
+
+    <script>
+        var i = 0;
+        var gomb = document.getElementById('bttn');
+        var gombDn = document.getElementById('bttnDn');
+        var displayClick = document.getElementById('katt');
+
+        gomb.onclick = function() {
+            i++;
+            if (i >= 3) {
+                gomb.style.backgroundColor = 'blue';
+            } else if (i > -3 && i < 3) {
+                gomb.style.backgroundColor = 'green';
+                gombDn.style.backgroundColor = 'green';
+            }
+            console.log(i);
+            displayClick.innerHTML = i;
+        }
+
+        gombDn.ondblclick = function() {
+            i--;
+            if (i <= -3) {
+                gombDn.style.backgroundColor = 'red';
+            } else if (i > -3 && i < 3) {
+                gomb.style.backgroundColor = 'green';
+                gombDn.style.backgroundColor = 'green';
+            }
+            displayClick.innerHTML = i;
+        }
+    </script>
+</body>
+</html>
+
+
