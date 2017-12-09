@@ -9,13 +9,32 @@ canvas.height = H;
 var c = canvas.getContext('2d');
 
 // =============================================
+function Circle(x, y) {
+    this.x = x; 
+    this.y = y; 
+
+    this.draw = function() {
+        
+    }
+}
+
 c.strokeStyle = 'rgba(0, 125, 255, 0.5)';
 
-x = 50;
-var xSpeed = 2;
-y = 50;
-var ySpeed = 3; 
-radius = 20;
+var minSpeed = 0.2;
+var speedFactor = 3;
+var minRadius = 50;
+var maxRadius = 150 - minRadius;
+
+x = Math.random() * W;
+var xSpeed = (Math.random() - 0.5) * speedFactor;
+xSpeed += xSpeed * minSpeed;
+
+y = Math.random() * H;
+var ySpeed = (Math.random() - 0.5) * speedFactor;
+ySpeed += ySpeed * minSpeed;
+
+radius = Math.random() * maxRadius + minRadius;;
+
 function animate() {
     requestAnimationFrame(animate);
     c.clearRect(0, 0, W, H);
