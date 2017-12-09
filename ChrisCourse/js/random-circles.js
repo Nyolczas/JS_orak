@@ -15,7 +15,7 @@ for (var i = 0; i < 1550; i++) {
     var x = Math.random() * W;
     var y = Math.random() * H;
     var min = 50;
-    var max = 250 - min;
+    var max = 150 - min;
     var r = Math.random() * max + min;
     c.arc( x, y, r, 0, Math.PI * 2, false);
     c.stroke();
