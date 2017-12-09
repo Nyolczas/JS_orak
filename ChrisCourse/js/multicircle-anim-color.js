@@ -18,7 +18,7 @@ function counter(x) {
 var cnt = 0;
 function colorClock() {
     cnt = counter(cnt);
-    setTimeout(function() {
+    setTimeout(function () {
         colorClock();
     }, 100);
 
@@ -32,10 +32,10 @@ c.strokeStyle = 'rgba(255, 255, 255, 0.1)';
 
 var minSpeed = 0.2;
 var speedFactor = 0.5;
-var minRadius = 8;
-var maxRadius = 88 - minRadius;
+var minRadius = Math.floor((W + H) * 0.004);
+var maxRadius = minRadius * 8 - minRadius;
 
-var quant = Math.floor((W + H) / 50);
+var quant = Math.floor((W + H) * 1.2);
 // =============================================
 
 function Circle(x, y, xSpeed, ySpeed, radius) {
