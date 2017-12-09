@@ -7,16 +7,26 @@ canvas.width = W;
 canvas.height = H;
 
 var c = canvas.getContext('2d');
-// =============================================
-c.strokeStyle = 'rgba(0, 125, 255, 0.33)';
+// ============================================= Global variables
+//c.strokeStyle = 'rgba(0, 125, 255, 0.33)';
 c.lineWidth = 10;
 
 var minSpeed = 0.2;
-var speedFactor = 1;
-var minRadius = 8;
-var maxRadius = 88 - minRadius;
+var speedFactor = 0.7;
+var minMinRadius = 3;
+var minRadius = 12;
+var maxRadius = 40;
+var mouseField = 33;
 
-var quant = Math.floor((W + H) / 8);
+var quant = Math.floor((W + H) * 0.3);
+
+var clrArray = [
+    '#6C1432',
+    '#8F425A',
+    '#FAB395',
+    '#A67054',
+    '#E9A182'
+];
 // ============================================= Events
 var mouse = {
     x: undefined,
@@ -27,7 +37,7 @@ window.addEventListener('mousemove',
     function (event) {
         mouse.x = event.x;
         mouse.y = event.y;
-        console.log(mouse);
+        //console.log(mouse);
     })
 
 // =============================================   Circle creation and anim
@@ -37,11 +47,16 @@ function Circle(x, y, xSpeed, ySpeed, radius) {
     this.xSpeed = xSpeed;
     this.ySpeed = ySpeed;
     this.radius = radius;
+    this.minRadius = radius;
+    this.color = clrArray[Math.round(Math.random() * clrArray.length)];
 
     this.draw = function () {
         c.beginPath();
         c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-        c.stroke();
+        //c.stroke();
+        // c.shadowColor = this.color;
+        // c.shadowBlur = 5;
+        c.fillStyle = this.color;
         c.fill();
     }
 
@@ -57,12 +72,12 @@ function Circle(x, y, xSpeed, ySpeed, radius) {
         this.y += this.ySpeed;
 
         // interaktivity
-        if (mouse.x - this.x < 50 && mouse.x - this.x > -50
-            && mouse.y - this.y < 50 && mouse.y - this.y > -50) {
+        if (mouse.x - this.x < mouseField && mouse.x - this.x > -mouseField
+            && mouse.y - this.y < mouseField && mouse.y - this.y > -mouseField) {
             if (this.radius < maxRadius) {
                 this.radius++;
             }
-        } else if (this.radius > minRadius) {
+        } else if (this.radius > this.minRadius) {
             this.radius -= 1;
         }
 
@@ -79,7 +94,7 @@ for (var i = 0; i < quant; i++) {
     xSpeed += xSpeed * minSpeed;
     var ySpeed = (Math.random() - 0.5) * speedFactor;
     ySpeed += ySpeed * minSpeed;
-    radius = Math.random() * maxRadius + minRadius;
+    var radius = Math.random() * minRadius + minMinRadius;
 
     CircleArray.push(new Circle(x, y, xSpeed, ySpeed, radius));
 }
